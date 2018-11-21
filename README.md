@@ -323,3 +323,103 @@ The While Loop
     What would happen if we didn't increment counterTwo inside our block? If we didn't include this, counterTwo would always have its initial value, 0. That would mean the testing condition counterTwo < 4 would always evaluate to true and our loop would never stop running! This is called an infinite loop and it's something we always want to avoid. Infinite loops can take up all of your computer's processing power potentially freezing your computer.
 
     So you may be wondering when to use a while loop! The syntax of a for loop is ideal when we know how many times the loop should run, but we don't always know this in advance. Think of eating like a while loop: when you start taking bites, you don't know the exact number you'll need to become full. Rather you'll eat while you're hungry. In situations when we want a loop to execute an undetermined number of times, while loops are the best choice.
+
+Do...While Statements
+    Review:
+        Great job! In this lesson, we learned how to write cleaner code with loops. You now know:
+        Loops perform repetitive actions so we don’t have to code that process manually every time.
+        How to write for loops with an iterator variable that increments or decrements
+        How to use a for loop to iterate through an array
+        A nested for loop is a loop inside another loop
+        while loops allow for different types of stopping conditions
+        Stopping conditions are crucial for avoiding infinite loops.
+        do...while loops run code at least once— only checking the stopping condition after the first execution
+        The break keyword allows programs to leave a loop during the execution of its block
+
+The .map() Method
+    The second iterator we're going to cover is .map(). When .map() is called on an array, it takes an argument of a callback function and returns a new array! Take a look at an example of calling .map():
+
+        const numbers = [1, 2, 3, 4, 5]; 
+
+        const bigNumbers = numbers.map(number => {
+        return number * 10;
+        });
+        .map() works in a similar manner to .forEach()— the major difference is that .map() returns a new array.
+
+    In the example above:
+
+    numbers is an array of numbers.
+    bigNumbers will store the return value of calling .map() on numbers.
+    numbers.map will iterate through each element in the numbers array and pass the element into the callback function.
+    return number * 10 is the code we wish to execute upon each element in the array. This will save each value from the numbers array, multiplied by 10, to a new array.
+    If we take a look at numbers and bigNumbers:
+
+    console.log(numbers); // Output: [1, 2, 3, 4, 5]
+    console.log(bigNumbers); // Output: [10, 20, 30, 40, 50]
+    Notice that the elements in numbers were not altered and bigNumbers is a new array.
+--------------------------------------------------------------------------------
+Chapter 4: Iterators
+--------------------------------------------------------------------------------
+The .findIndex() Method
+    We sometimes want to find the location of an element in an array. That's where the .findIndex() method comes in! Calling .findIndex() on an array will return the index of the first element that evaluates to true in the callback function.
+
+        const jumbledNums = [123, 25, 78, 5, 9]; 
+
+        const lessThanTen = jumbledNums.findIndex(num => {
+        return num < 10;
+        });
+    jumbledNums is an array that contains elements that are numbers.
+    const lessThanTen = declares a new variable that stores the returned index number from invoking .findIndex().
+    The callback function is an arrow function has a single parameter, num. Each element in the jumbledNums array will be passed to this function as an argument.
+    num < 10; is the condition that elements are checked against. .findIndex() will return the index of the first element which evaluates to true for that condition.
+    Let's take a look at what lessThanTen evaluates to:
+
+        console.log(lessThanTen); // Output: 3
+        If we check what element has index of 3:
+
+        console.log(jumbledNums[3]); // Output: 5
+        Great, the element in index 3 is the number 5. This makes sense since 5 is the first element that is less than 10.
+
+        If there isn't a single element in the array that satisfies the condition in the callback, then .findIndex() will return -1.
+
+        const greaterThan1000 = jumbledNums.findIndex(num => {
+        return num > 1000;
+        });
+
+        console.log(greaterThan1000); // Output: -1
+
+The .reduce() Method
+    Use the .reduce method to add an array together. It takes a  call back function that takes 2 arguments. The .reduce will hit that function each time for every section of the array.
+        array.reduce(function(accumulatorValue,arrayValue), initialAcumulatorValue);
+The .filter() Method
+    Use the filter method by putting a call back function that takes the argument of the element in the array. For example a number or a string. Then tell the function to return the arguments with your paramenters.
+        ex.
+            const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+            const interestingWords = words.filter(
+                function (word){ 
+                return word.length > 5;
+            }
+            );
+            Result: [ 'unique', 'uncanny', 'oxymoron' ]
+The .every() Method
+    Use the every method to test if all elements in an array pass the parameters
+console.log(interestingWords);
+
+Loop Cheat Sheet
+    var array = ['a','b','c','d']
+
+    for (let item of array) { // Of - Loops through items of array
+    console.log("Let Of " + item)
+    }
+
+    for (let index in array) { // In - Loops through indices in array
+    console.log("Let In " + index)
+    }
+
+    for (var i=0; i < array.length; i++) {
+    console.log("Item " + array[i]) // array[i] - returns items of array
+    }
+
+    for (var i=0; i < array.length; i++) {
+    console.log("Index " + i) // i - returns indices in array
+    }
